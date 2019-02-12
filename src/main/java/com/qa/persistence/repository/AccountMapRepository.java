@@ -7,7 +7,7 @@ import com.qa.persistence.domain.Account;
 
 public class AccountMapRepository implements AccountRepository{
 	
-	Map<Long, Account> accountMap = new HashMap<Long, Account>();
+	Map<Integer, Account> accountMap = new HashMap<Integer, Account>();
 	
 	//You must provide concrete implementation for each of these methods
 	//do not change the method signature
@@ -28,12 +28,12 @@ public class AccountMapRepository implements AccountRepository{
 		return null;
 	}
 
-	public String deleteAccount(int id) {
+	public String deleteAccount(int accountNumber) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String updateAccount(int id, String account) {
+	public String updateAccount(int accountNumber, String account) {
 		// TODO Auto-generated method stub
 		return null;
 	}
