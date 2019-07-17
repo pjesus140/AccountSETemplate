@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.qa.AccountNotFoundException;
+import com.qa.exceptions.AccountNotFoundException;
 import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtil;
 

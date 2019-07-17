@@ -2,7 +2,7 @@ package com.qa.persistence.repository;
 
 import java.util.List;
 
-import com.qa.AccountNotFoundException;
+import com.qa.exceptions.AccountNotFoundException;
 import com.qa.persistence.domain.Account;
 
 public interface AccountRepository {

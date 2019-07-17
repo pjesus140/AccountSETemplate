@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.qa.AccountNotFoundException;
+import com.qa.exceptions.AccountNotFoundException;
 import com.qa.persistence.domain.Account;
 import com.qa.persistence.repository.AccountMapRepository;
 import com.qa.persistence.repository.AccountRepository;
