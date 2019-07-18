@@ -7,7 +7,6 @@ import javax.persistence.Id;
 
 @Entity
 public class Account {
-	
 
 	// This class needs to have:
 	// An id
@@ -21,12 +20,15 @@ public class Account {
 
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "Account [accNum=" + accNum + ", fName=" + fName + ", lName=" + lName + "]";
 	}
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int accNum;
 	private String fName;

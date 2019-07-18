@@ -14,18 +14,21 @@ public class App {
 		System.out.println(amr.createAccount( 563, "sam", "biggs"));
 		System.out.println(amr.createAccount( 123, "jim", "bambo"));
 		
-		amr.getAllAccounts();
 		
-		amr.updateAccount(3, 987, "ana", "smith");
 		
-		amr.getAllAccounts();
+//		
+//		amr.getAllAccounts();
+//		
+//		amr.updateAccount(3, 987, "ana", "smith");
+//		
+//		amr.getAllAccounts();
 		
 //		amr.deleteAccount(1);
-		amr.getAllAccounts();
-		String strx = (amr.toJson(1));
-		
-		
-		amr.sameNames("jim");
+//		amr.getAllAccounts();
+//		String strx = (amr.toJson(1));
+//		
+//		
+//		amr.sameNames("jim");
 
 //		amr.toObj(strx);
 		
