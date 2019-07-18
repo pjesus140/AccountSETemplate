@@ -7,11 +7,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.enterprise.inject.Alternative;
+
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtil;
 
+@Alternative
 public class AccountMapRepository implements AccountRepository {
 	
 	

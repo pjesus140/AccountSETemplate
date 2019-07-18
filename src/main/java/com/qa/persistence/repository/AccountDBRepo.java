@@ -2,6 +2,7 @@ package com.qa.persistence.repository;
 
 import java.util.List;
 
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,7 +13,7 @@ import javax.transaction.Transactional.TxType;
 import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtil;
 
-@Transactional(value = TxType.REQUIRED)
+@Transactional(value = TxType.REQUIRED)@Default
 public class AccountDBRepo implements AccountRepository {
 	
 	@Inject
