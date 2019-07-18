@@ -2,6 +2,7 @@ package com.qa.persistence.repository;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -13,15 +14,17 @@ import com.qa.util.JSONUtil;
 
 @Transactional(value = TxType.REQUIRED)
 public class AccountDBRepo implements AccountRepository {
-	private JSONUtil json = new JSONUtil();
+	
+	@Inject
+	private JSONUtil json;
 
 	@PersistenceContext(unitName = "primary")
 	private EntityManager em;
 
 	public String createAccount(int accNum, String fName, String lName) {
 
-		Account a = new Account(accNum, fName, lName);
-		em.persist(a);
+		Account newAcc = new Account(accNum, fName, lName);
+		em.persist(newAcc);
 		return null;
 	}
 
