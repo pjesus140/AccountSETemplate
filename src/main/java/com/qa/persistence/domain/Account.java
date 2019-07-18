@@ -1,6 +1,13 @@
 package com.qa.persistence.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Account {
+	
 
 	// This class needs to have:
 	// An id
@@ -19,7 +26,8 @@ public class Account {
 		return "Account [accNum=" + accNum + ", fName=" + fName + ", lName=" + lName + "]";
 	}
 
-	 private int id;
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	private int accNum;
 	private String fName;
 	private String lName;
