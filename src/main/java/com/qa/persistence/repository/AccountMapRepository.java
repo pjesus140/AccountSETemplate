@@ -10,8 +10,12 @@ import java.util.Map;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.qa.persistence.domain.Account;
+import com.qa.util.JSONUtil;
 
 public class AccountMapRepository implements AccountRepository {
+	
+	
+	private JSONUtil json = new JSONUtil();
 
 	Map<Long, Account> accountMap = new HashMap<Long, Account>();
 
@@ -34,16 +38,16 @@ public class AccountMapRepository implements AccountRepository {
 		return "";
 	}
 
-	private long x = 0;
+	private long count = 1;
 	
 	
 	
 
 	public String createAccount(int accNum, String fName, String lName) {
 		Account a = new Account(accNum, fName, lName);
-		a.setId((int) x);
-		accountMap.put(x, a);
-		x++;
+		a.setId((int) count);
+		accountMap.put(count, a);
+		count++;
 		return a.getfName() + " " + a.getlName() + " Account created";
 	}
 
@@ -67,11 +71,8 @@ public class AccountMapRepository implements AccountRepository {
 
 		try {
 
-			// Java objects to JSON string - compact-print
 			String jsonString = mapper.writeValueAsString(accountMap);
-
 			System.out.println(jsonString);
-
 			return jsonString;
 
 		} catch (IOException e) {
@@ -115,5 +116,38 @@ public class AccountMapRepository implements AccountRepository {
 	// }
 	//
 	// }
+	
+	
+	
+	public String createAccount(String account) {
+		Account toAdd = this.json.getObjectForJSON(account, Account.class);
+		this.accountMap.put((long) toAdd.getId(), toAdd);
+		if (this.accountMap.containsValue(toAdd)) {
+			return SUCCESS;
+		} else {
+			return "Failed to add account";
+		}
+	}
+	
+	public String deleteAccount(String account) {
+		Account toUpdate = this.json.getObjectForJSON(account, Account.class);
+		int key = toUpdate.getId();
+		accountMap.remove(key);
+
+		return null;
+	}
+	
+	
+	
+	
+	public String updateAccount(Long accNum, String account) {
+		Account toUpdate = this.json.getObjectForJSON(account, Account.class);
+		this.accountMap.replace(accNum, toUpdate);
+		if (this.accountMap.containsValue(toUpdate)) {
+			return FAILURE;
+		} else {
+			return "Failed to add account";
+		}
+	}
 
 }

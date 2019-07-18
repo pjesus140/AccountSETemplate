@@ -1,5 +1,6 @@
 package com.qa;
 
+import com.qa.persistence.repository.AccountDBRepo;
 import com.qa.persistence.repository.AccountMapRepository;
 
 public class App {
@@ -14,6 +15,7 @@ public class App {
 		System.out.println(amr.createAccount( 563, "sam", "biggs"));
 		System.out.println(amr.createAccount( 123, "jim", "bambo"));
 		
+		AccountDBRepo adb = new AccountDBRepo();
 		
 		
 //		

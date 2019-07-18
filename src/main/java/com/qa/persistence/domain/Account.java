@@ -19,6 +19,11 @@ public class Account {
 		this.lName = lName;
 
 	}
+	
+	public Account() {
+		super();
+
+	}
 
 	
 
