@@ -10,10 +10,10 @@ public class App {
 
 
 		AccountMapRepository amr = new AccountMapRepository();
-		System.out.println(amr.createAccount( 123, "jim", "bam"));
-		System.out.println(amr.createAccount( 321, "james", "topson"));
-		System.out.println(amr.createAccount( 563, "sam", "biggs"));
-		System.out.println(amr.createAccount( 123, "jim", "bambo"));
+//		System.out.println(amr.createAccount( 123, "jim", "bam"));
+//		System.out.println(amr.createAccount( 321, "james", "topson"));
+//		System.out.println(amr.createAccount( 563, "sam", "biggs"));
+//		System.out.println(amr.createAccount( 123, "jim", "bambo"));
 		
 		AccountDBRepo adb = new AccountDBRepo();
 		

@@ -22,12 +22,12 @@ public class AccountDBRepo implements AccountRepository {
 	@PersistenceContext(unitName = "primary")
 	private EntityManager em;
 
-	public String createAccount(int accNum, String fName, String lName) {
-
-		Account newAcc = new Account(accNum, fName, lName);
-		em.persist(newAcc);
-		return null;
-	}
+//	public String createAccount(int accNum, String fName, String lName) {
+//
+//		Account newAcc = new Account(accNum, fName, lName);
+//		em.persist(newAcc);
+//		return null;
+//	}
 
 	public String createAccount(String account) {
 
@@ -45,14 +45,14 @@ public class AccountDBRepo implements AccountRepository {
 
 	}
 
-	public String deleteAccount(long id) {
-
-		Account delAcc = em.find(Account.class, id);
-		em.remove(delAcc);
-
-		return null;
-	}
-
+//	public String deleteAccount(long id) {
+//
+//		Account delAcc = em.find(Account.class, id);
+//		em.remove(delAcc);
+//
+//		return null;
+//	}
+	
 	public String deleteAccount(String account) {
 		Account toDel = this.json.getObjectForJSON(account, Account.class);
 		Account delAcc = em.find(Account.class, toDel.getId());
@@ -61,21 +61,21 @@ public class AccountDBRepo implements AccountRepository {
 		return null;
 	}
 
-	public String updateAccount(long id, int accNum, String fName, String lName) {
-
-		Account upAcc = em.find(Account.class, id);
-		upAcc.setAccNum(accNum);
-		upAcc.setfName(fName);
-		upAcc.setlName(lName);
-		em.persist(upAcc);
-
-		return null;
-	}
+//	public String updateAccount(long id, int accNum, String fName, String lName) {
+//
+//		Account upAcc = em.find(Account.class, id);
+//		upAcc.setAccNum(accNum);
+//		upAcc.setfName(fName);
+//		upAcc.setlName(lName);
+//		em.persist(upAcc);
+//
+//		return null;
+//	}
 	
 	
-	public String updateAccount(String account) {
+	public String updateAccount(Long accNum,String account) {
 		Account toUp = this.json.getObjectForJSON(account, Account.class);
-		Account upAcc = em.find(Account.class, toUp.getId());
+		Account upAcc = em.find(Account.class, accNum);
 		upAcc.setAccNum(toUp.getAccNum());
 		upAcc.setfName(toUp.getfName());
 		upAcc.setlName(toUp.getlName());
@@ -83,6 +83,14 @@ public class AccountDBRepo implements AccountRepository {
 		
 
 		return null;
+	}
+	public List<Account> findAccountsByFirstName(String fName){
+		
+//		Account nameAcc = em.find(Account.class, firstName);
+		TypedQuery<Account> query = this.em.createQuery("SELECT a FROM Account a WHERE a.fName = :fName",
+				Account.class);
+		query.setParameter("fName", fName);
+		return query.getResultList();
 	}
 
 }

@@ -9,8 +9,8 @@ public interface AccountRepository {
 	final String FAILURE = "Operation succeeded";
 
 	String getAllAccounts();
-	String createAccount(int accNum, String fName, String lName);
-	String deleteAccount(long id);
-	String updateAccount(long id, int accNum, String fName, String lName);
+	String createAccount(String account);
+	String deleteAccount(String account);
+	String updateAccount(Long accNum, String account);
 
 }

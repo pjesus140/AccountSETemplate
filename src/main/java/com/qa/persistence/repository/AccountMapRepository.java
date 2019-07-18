@@ -46,28 +46,28 @@ public class AccountMapRepository implements AccountRepository {
 	
 	
 
-	public String createAccount(int accNum, String fName, String lName) {
-		Account a = new Account(accNum, fName, lName);
-		a.setId((int) count);
-		accountMap.put(count, a);
-		count++;
-		return a.getfName() + " " + a.getlName() + " Account created";
-	}
+//	public String createAccount(int accNum, String fName, String lName) {
+//		Account a = new Account(accNum, fName, lName);
+//		a.setId((int) count);
+//		accountMap.put(count, a);
+//		count++;
+//		return a.getfName() + " " + a.getlName() + " Account created";
+//	}
 
-	public String deleteAccount(long id) {
+//	public String deleteAccount(long id) {
+//
+//		accountMap.remove(id);
+//
+//		return null;
+//	}
 
-		accountMap.remove(id);
-
-		return null;
-	}
-
-	public String updateAccount(long id, int accNum, String fName, String lName) {
-		Account a = new Account(accNum, fName, lName);
-		a.setId((int) id);
-		accountMap.replace(id, a);
-
-		return null;
-	}
+//	public String updateAccount(long id, int accNum, String fName, String lName) {
+//		Account a = new Account(accNum, fName, lName);
+//		a.setId((int) id);
+//		accountMap.replace(id, a);
+//
+//		return null;
+//	}
 
 	public String toJson(long a) {
 		ObjectMapper mapper = new ObjectMapper();
