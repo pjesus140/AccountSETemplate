@@ -21,13 +21,13 @@ public class AccountServiceImpl implements AccountService {
 	
 	public String createAccount(String account) {
 		// TODO Auto-generated method stub
-		return null;
+		return this.repo.createAccount(account);
 	}
 
 	
 	public String deleteAccount(int id) throws AccountNotFoundException {
 		// TODO Auto-generated method stub
-		return null;
+		return this.repo.deleteAccount(id);
 	}
 
 	

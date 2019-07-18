@@ -38,10 +38,8 @@ public class AccountDBRepo implements AccountRepository {
 
 	@Transactional(value = TxType.SUPPORTS)
 	public String getAllAccounts() {
-
-		TypedQuery<Account> query = em.createQuery("SELECT m FROM Account m ORDER     	 BY m.ID DESC", Account.class);
-		System.out.println(query.getResultList());
-		return null;
+		TypedQuery<Account> query = em.createQuery("SELECT a FROM Account a", Account.class);
+		return this.json.getJSONForObject(query.getResultList());
 
 	}
 
@@ -53,9 +51,9 @@ public class AccountDBRepo implements AccountRepository {
 //		return null;
 //	}
 	
-	public String deleteAccount(String account) {
-		Account toDel = this.json.getObjectForJSON(account, Account.class);
-		Account delAcc = em.find(Account.class, toDel.getId());
+	public String deleteAccount(int id) {
+		
+		Account delAcc = em.find(Account.class, id);
 		em.remove(delAcc);
 
 		return null;
@@ -73,9 +71,9 @@ public class AccountDBRepo implements AccountRepository {
 //	}
 	
 	
-	public String updateAccount(Long accNum,String account) {
+	public String updateAccount(int id,String account) {
 		Account toUp = this.json.getObjectForJSON(account, Account.class);
-		Account upAcc = em.find(Account.class, accNum);
+		Account upAcc = em.find(Account.class, id);
 		upAcc.setAccNum(toUp.getAccNum());
 		upAcc.setfName(toUp.getfName());
 		upAcc.setlName(toUp.getlName());

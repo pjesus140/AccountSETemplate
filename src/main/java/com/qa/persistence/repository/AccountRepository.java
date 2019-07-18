@@ -10,7 +10,7 @@ public interface AccountRepository {
 
 	String getAllAccounts();
 	String createAccount(String account);
-	String deleteAccount(String account);
-	String updateAccount(Long accNum, String account);
+	String deleteAccount(int id);
+	String updateAccount(int id, String account);
 
 }

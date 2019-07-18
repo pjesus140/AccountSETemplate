@@ -132,10 +132,10 @@ public class AccountMapRepository implements AccountRepository {
 		}
 	}
 	
-	public String deleteAccount(String account) {
-		Account toUpdate = this.json.getObjectForJSON(account, Account.class);
-		int key = toUpdate.getId();
-		accountMap.remove(key);
+	public String deleteAccount(int id) {
+//		Account toUpdate = this.json.getObjectForJSON(account, Account.class);
+//		int key = toUpdate.getId();
+//		accountMap.remove(key);
 
 		return null;
 	}
@@ -143,14 +143,15 @@ public class AccountMapRepository implements AccountRepository {
 	
 	
 	
-	public String updateAccount(Long accNum, String account) {
-		Account toUpdate = this.json.getObjectForJSON(account, Account.class);
-		this.accountMap.replace(accNum, toUpdate);
-		if (this.accountMap.containsValue(toUpdate)) {
-			return FAILURE;
-		} else {
-			return "Failed to add account";
-		}
+	public String updateAccount(int id, String account) {
+//		Account toUpdate = this.json.getObjectForJSON(account, Account.class);
+//		this.accountMap.replace(accNum, toUpdate);
+//		if (this.accountMap.containsValue(toUpdate)) {
+//			return FAILURE;
+//		} else {
+//			return "Failed to add account";
+//		}
+		return null;
 	}
 
 }

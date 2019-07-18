@@ -6,6 +6,7 @@ import com.qa.exceptions.AccountNotFoundException;
 import com.qa.persistence.domain.Account;
 
 public interface AccountService {
+	
 	String getAllAccounts();
 
 	String createAccount(String account);
