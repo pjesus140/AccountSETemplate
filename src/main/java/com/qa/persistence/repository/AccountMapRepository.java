@@ -1,18 +1,19 @@
 package com.qa.persistence.repository;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.awt.List;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.gson.JsonNull;
+import com.google.gson.JsonObject;
 import com.qa.persistence.domain.Account;
-import com.qa.util.JSONUtil;
 
 public class AccountMapRepository implements AccountRepository {
 
-	private Map<Integer, Account> accountMap = new HashMap<Integer, Account>();
-
-	private int count = 1;
-
-	private JSONUtil json = new JSONUtil();
+	Map<Long, Account> accountMap = new HashMap<Long, Account>();
 
 	// You must provide concrete implementation for each of these methods
 	// do not change the method signature
@@ -24,33 +25,95 @@ public class AccountMapRepository implements AccountRepository {
 	// You can use the suggested tests or build your own.
 
 	public String getAllAccounts() {
-		// TODO Auto-generated method stub
+
+		for (Long n : accountMap.keySet()) {
+			System.out.println("id: " + n.toString() + "\n: " + ((Account) accountMap.get(n)).getAccNum()
+					+ "\nFirst name: " + ((Account) accountMap.get(n)).getfName() + "\nLast name: "
+					+ ((Account) accountMap.get(n)).getlName());
+		}
+		return "";
+	}
+
+	private long x = 0;
+	
+	
+	
+
+	public String createAccount(int accNum, String fName, String lName) {
+		Account a = new Account(accNum, fName, lName);
+		a.setId((int) x);
+		accountMap.put(x, a);
+		x++;
+		return a.getfName() + " " + a.getlName() + " Account created";
+	}
+
+	public String deleteAccount(long id) {
+
+		accountMap.remove(id);
+
 		return null;
 	}
 
-	public String createAccount(String account) {
-		Account toAdd = this.json.getObjectForJSON(account, Account.class);
-		this.accountMap.put(this.count++, toAdd);
-		if (this.accountMap.containsValue(toAdd)) {
-			return SUCCESS;
-		} else {
-			return "Failed to add account";
-		}
-	}
+	public String updateAccount(long id, int accNum, String fName, String lName) {
+		Account a = new Account(accNum, fName, lName);
+		a.setId((int) id);
+		accountMap.replace(id, a);
 
-	public String deleteAccount(int accountNumber) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String updateAccount(int accountNumber, String account) {
-		Account toUpdate = this.json.getObjectForJSON(account, Account.class);
-		this.accountMap.replace(accountNumber, toUpdate);
-		if (this.accountMap.containsValue(toUpdate)) {
-			return FAILURE;
-		} else {
-			return "Failed to add account";
+	public String toJson(long a) {
+		ObjectMapper mapper = new ObjectMapper();
+
+		try {
+
+			// Java objects to JSON string - compact-print
+			String jsonString = mapper.writeValueAsString(accountMap);
+
+			System.out.println(jsonString);
+
+			return jsonString;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
 		}
+
 	}
+
+	public int sameNames(String fName) {
+
+		int count = 0;
+
+		for (Long y : accountMap.keySet()) {
+			if (accountMap.get(y).getfName().equals(fName)) {
+				count++;
+			}
+		}
+		System.out.println("Fist name: " + fName + "\nAppears:" + count + "x");
+		return count;
+
+	}
+
+	
+
+	// public void toObj(String jsonString) {
+	// ObjectMapper mapper = new ObjectMapper();
+	//
+	// try {
+	//
+	//
+	//
+	// // Java objects to JSON string - compact-print
+	// Account staff2 = mapper.readValue(jsonString, Account.class);
+	//
+	// System.out.println(staff2);
+	//
+	//
+	// } catch (IOException e) {
+	// e.printStackTrace();
+	// }
+	//
+	// }
 
 }
